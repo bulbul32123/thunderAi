@@ -1,26 +1,250 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --rt-color-white: #fff;
+  --rt-color-dark: #222;
+  --rt-color-success: #8dc572;
+  --rt-color-error: #be6464;
+  --rt-color-warning: #f0ad4e;
+  --rt-color-info: #337ab7;
+  --rt-opacity: 0.9;
+  --rt-transition-show-delay: 0.15s;
+  --rt-transition-closing-delay: 0.15s;
+  --rt-arrow-size: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'technor';
+  src: url('/font/Technor/Fonts/WEB/fonts/Technor-Black.ttf') format('truetype');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h5 {
+  font-family: 'technor';
+}
+
+@theme {
+  /* Colors */
+  --color-base: #0a0a0a;
+  --color-chatCard: #171717;
+  --color-card: #0f0f0f;
+  --color-borderColor: #ffffff1a;
+  --color-userChat: #212121;
+  --color-dropdown: #242424;
+  --color-cardHover: #151515;
+  --color-buttonGroup: #161616;
+  --color-buttonGroupActive: #ffffff1a;
+  --color-popup: #1c1c1c;
+  --bolt-ds-text-tertiary: rgba(255, 255, 255, .6);
+  --color-input: #171717;
+  --color-inputBorder: #ffffff29;
+  --color-secondaryButton: #2c2c2c;
+  --color-secondaryButtonHover: #383838;
+  --color-revers: #fff;
+  --color-overlay: #00000080;
+  --color-full: #171717;
+  --color-gradientHalf: #1d1d1d21;
+  --color-buttonHover-active: #2c2c2c;
+  --color-userProfile: #fff;
+  --color-active: #ffffff0f;
+  --color-highlightCard: #1e1e1e;
+  --color-auth: #ededed;
+  --color-emphasis-high: #fff;
+  --color-emphasis-medium: #fffc;
+  --color-emphasis-low: #fff9;
+  --color-input-placeholder: #fff6;
+  --color-revers-text: #000;
+  --color-outline1: #ffffff1a;
+  --color-outline2: #ffffff29;
+  --color-outline3: #fff3;
+  --color-primary-50: #0061ff1a;
+  --color-primary-400: #0c8ce9;
+  --color-primary-500: #0c8ce9;
+  --color-primary-600: #0489ea;
+  --color-secondary-50: #f68a311a;
+  --color-secondary-400: #f9a453;
+  --color-secondary-500: #f78922;
+  --color-secondary-600: #dd7008;
+  --color-success-50: #11841f1a;
+  --color-success-500: #2eb23e;
+  --color-success-600: #107e3e;
+  --color-success-700: #0e7138;
+  --color-warning-50: #facc151a;
+  --color-warning-400: #f6d956;
+  --color-warning-500: #f3ce26;
+  --color-warning-600: #856a1a;
+  --color-warning-700: #785f17;
+  --color-info-50: #3498db1a;
+  --color-info-400: #3498db;
+  --color-danger-50: #e434521a;
+  --color-danger-400: #ea6178;
+  --color-danger-500: #e43452;
+  --color-danger-600: #cb1b39;
+  --color-textSecondary: rgb(163, 163, 163);
+  --color-danger-700: #b71833;
+  --shadow-dropdown: #0000003b 0px 1px 8px 3px;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* Backdrop blur */
+  --backdrop-blur-xs: 2px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-base);
+  color: var(--color-emphasis-high);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  overflow: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgb(59 130 246)
+  }
+
+  100% {
+    box-shadow: 0 0 20px rgb(59 130 246), 0 0 30px rgb(59 130 246)
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px)
+  }
+
+  50% {
+    transform: translateY(-10px)
+  }
+
+  100% {
+    transform: translateY(0px)
+  }
+}
+
+.gradient-outer {
+  content: "";
+  z-index: 1;
+  border-radius: 12px;
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  top: 1.5px;
+  right: 1.5px;
+  bottom: 1.5px;
+  left: 1.5px;
+}
+
+.bg-chatCard {
+  background-color: var(--color-chatCard);
+}
+
+.gradient-border:before {
+  offset-path: rect(0 auto 100% auto);
+  transform-origin: 50%;
+  -moz-mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+  background: radial-gradient(#0061ff, var(--color-full) 100%, transparent 50%);
+  content: "";
+  width: 100px;
+  height: 100px;
+  animation: 4s ease-in-out infinite animateGradient;
+  position: absolute;
+  transform: rotate(45deg);
+  -webkit-mask-image: linear-gradient(90deg, #0000, #000 20% 80%, #0000);
+  mask-image: linear-gradient(90deg, #0000, #000 20%, #000 80%, #0000);
+}
+
+@keyframes animateGradient {
+  0% {
+    offset-distance: 0%;
+    opacity: 1;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    offset-distance: 100%;
+  }
+}
+
+
+
+
+.border {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
+
+.border-outline2 {
+  border-color: var(--color-outline2);
+}
+
+.z-layer-1 {
+  z-index: 1;
+}
+
+.borderColor {
+  border-color: var(--color-borderColor);
+}
+
+.text-bolt-elements-textSecondary {
+  color: var(--color-textSecondary);
+}
+
+.arrow-up-right {
+  --un-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 24 24' width='1em' height='1em' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M7 7h10v10M7 17L17 7'/%3E%3C/svg%3E");
+  -webkit-mask: var(--un-icon) no-repeat;
+  mask: var(--un-icon) no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: currentColor;
+  color: inherit;
+  width: 1em;
+  height: 1em;
+}
+
+.text-bolt-ds-textTertiary {
+  color: var(--bolt-ds-text-tertiary)
 }
