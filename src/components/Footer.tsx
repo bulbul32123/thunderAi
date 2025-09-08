@@ -11,7 +11,7 @@ export default function Footer() {
             </div>
             <p className="hidden md:inline">
               <span className="text-xs text-bolt-elements-textSecondary">
-                © 2025 StackBlitz - All rights reserved.
+                © 2025 Bulbul islam - All rights reserved.
               </span>
             </p>
           </div>
