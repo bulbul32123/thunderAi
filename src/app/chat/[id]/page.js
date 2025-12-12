@@ -438,14 +438,4 @@ export default function WorkspaceLayout() {
 }
 
 
-git add src/app/chat/[id]/page.js
-git commit -m 'src/app/chat/[id]/page.js' --date='2025-12-13'
-git push -u origin main
 
-
-src/app/chat/layout.jsx
-src/app/page.tsx
-src/components/Navbar.tsx
-src/components/app-sidebar.tsx
-src/components/site-header.tsx
-src/page.js
