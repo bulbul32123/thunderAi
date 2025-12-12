@@ -3,12 +3,14 @@ import { PublishPopup } from "@/components/popups/PublishPopup.jsx";
 import { SharePopup } from "@/components/popups/SharePopup.jsx";
 import { ProjectSettings } from "@/components/popups/ProjectSettings.jsx";
 import { ProfileDropDown } from "./ProfileDropDown";
+import Link from "next/link";
 
 export function SiteHeader() {
   return (
     <header className="bg-background sticky py-3 top-0 z-50 flex w-full items-center border-b">
       <div className="flex justify-between w-full items-center gap-2 px-4">
-        <a
+        <Link
+          href={"/"}
           className="text-[12px] leading-[20px] text-black w-[107px] max-sm:w-20 cursor-pointer flex gap-2 items-center"
           role="button"
         >
@@ -18,7 +20,7 @@ export function SiteHeader() {
               BETA
             </p>
           </div>
-        </a>
+        </Link>
         <div className="flex gap-3 items-center">
           <ul className="flex gap-2 items-center max-sm:hidden">
             <ProjectSettings />
