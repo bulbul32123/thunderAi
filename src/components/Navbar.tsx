@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="flex flex-col w-full">
         <div className="transition-all duration-400 items-center flex ease-out px-8 max-sm:py-4 shrink-0 relative z-1 max-sm:relative max-sm:z-[10]">
           <div className="container flex justify-between items-center">
-            <a
+            <Link href={'/'}
               className="text-[12px] leading-[20px] text-black w-[107px] max-sm:w-20 cursor-pointer flex gap-2 items-center"
               role="button"
             >
@@ -18,7 +18,7 @@ export default function Navbar() {
                   BETA
                 </p>
               </div>
-            </a>
+            </Link>
             <div className="flex gap-3 items-center">
               <div className="flex gap-3 items-center">
                 <ul className="flex gap-2 items-center max-sm:hidden">
