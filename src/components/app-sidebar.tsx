@@ -49,15 +49,15 @@ const data = {
       items: [
         {
           title: "Build Proposal",
-          url: "chat/build-proposal1292345344",
+          url: "chat/build-proposal-1292345344",
         },
         {
           title: "Build Ai Resume Builder",
-          url: "chat/build-ai-resume-builder1292345344",
+          url: "chat/build-ai-resume-builder-1292345344",
         },
         {
           title: "Portfolio Builder",
-          url: "chat/portfolio-builder543657",
+          url: "chat/portfolio-builder-543657",
         },
       ],
     },
