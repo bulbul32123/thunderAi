@@ -1,11 +1,13 @@
 "use client"
-import { useState } from "react"
+import { useParams } from "next/navigation"
+import { useState, useMemo } from "react"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { FileExplorer } from "@/components/file-explorer"
 import { Code2, Eye, MoreVertical } from "lucide-react"
 import { EditorPanel } from "@/components/editor-panel"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import CodePreview from "@/components/CodePreview"
 
 export const mockProject = {
   framework: "nextjs",
@@ -362,54 +364,88 @@ body {
   ],
 }
 
+function getChatTitle(slug) {
+  const withoutId = slug.replace(/-\d+$/, "")
+
+  return withoutId
+    .split("-")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
+
 
 export default function WorkspaceLayout() {
+  const params = useParams()
+  const slug = params?.id
+  const title = useMemo(() => {
+    if (!slug) return ""
+    return getChatTitle(slug)
+  }, [slug])
+
   const [activeFile, setActiveFile] = useState(mockProject.files[0].path)
   const [tab, setTab] = useState("code")
 
   return (
     <div className="h-screen w-full bg-background text-black">
       <Tabs value={tab} className="flex-1 flex flex-col ">
-            <div className="border-b border-gray-300">
+        <div className="border-b border-gray-300">
           <TabsList className="h-12 w-full bg-transparent rounded-none px-4 flex justify-between items-center">
-            <div className="flex gap-2 border ">
-            <TabsTrigger value="code" onClick={()=> setTab('code')} className={`rounded-none flex items-center !cursor-pointer ${tab === 'code'&& '!bg-black !text-white'}`}>
-              <Code2 className="h-4 w-4 mr-2 " /> Code
-            </TabsTrigger>
-            <TabsTrigger value="preview"  onClick={()=> setTab('preview')} className={`rounded-none flex items-center !cursor-pointer ${tab === 'preview' && '!bg-black !text-white'}`}>
-              <Eye className="h-4 w-4 mr-2" /> Preview
-            </TabsTrigger>
+            <div className="">
+             Project name: <button className="underline text-black cursor-pointer">{title}</button>
+            </div>
+            <div className="top-4 transform z-20 bg-white/90 backdrop-blur-sm border border-zinc-200/80 shadow-sm p-1 rounded-full flex items-center gap-1">
+              <button
+                onClick={() => setTab('preview')}
+                className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium transition-all ${tab === 'preview' ? 'bg-zinc-100 text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-900'}`}
+              >
+                <Eye size={14} />
+                Preview
+              </button>
+              <button
+                onClick={() => setTab('code')}
+                className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium transition-all ${tab === 'code' ? 'bg-zinc-100 text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-900'}`}
+              >
+                <Code2 size={14} />
+                Code
+              </button>
             </div>
             <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
-            <MoreVertical className="h-4 w-4" />
-          </Button>
-        </div>
+              <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
+                <MoreVertical className="h-4 w-4" />
+              </Button>
+            </div>
           </TabsList>
         </div>
       </Tabs>
-      <ResizablePanelGroup direction="horizontal">
-        {tab === 'code' ? (
-          <>
-          <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>
-          <FileExplorer files={mockProject.files} activeFile={activeFile} onFileSelect={setActiveFile} />
-        </ResizablePanel>
-        <ResizableHandle className="bg-border text-black" />
-        <ResizablePanel defaultSize={80}>
-          <EditorPanel files={mockProject?.files} tab={tab} setTab={setTab} activeFile={activeFile} />
-        </ResizablePanel>
-          </>
-        ): (
-          <div className="h-full w-full flex items-center justify-center bg-gray-100">
-            <div className="text-center space-y-2">
-              <Eye className="h-12 w-12 mx-auto text-gray-400" />
-              <p className="text-lg font-medium">Live Preview</p>
-              <p className="text-sm text-gray-500">Preview coming soon</p>
-            </div>
-          </div>
-        )
-        }
-      </ResizablePanelGroup>
+      {tab === 'code' ? (
+        <>
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel defaultSize={20} minSize={15} maxSize={30}>
+              <FileExplorer files={mockProject.files} activeFile={activeFile} onFileSelect={setActiveFile} />
+            </ResizablePanel>
+            <ResizableHandle className="bg-border text-black" />
+            <ResizablePanel defaultSize={80}>
+              <EditorPanel files={mockProject?.files} tab={tab} setTab={setTab} activeFile={activeFile} />
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        </>
+      ) : (
+        <CodePreview />
+      )
+      }
     </div>
   )
 }
+
+
+git add src/app/chat/[id]/page.js
+git commit -m 'src/app/chat/[id]/page.js' --date='2025-12-13'
+git push -u origin main
+
+
+src/app/chat/layout.jsx
+src/app/page.tsx
+src/components/Navbar.tsx
+src/components/app-sidebar.tsx
+src/components/site-header.tsx
+src/page.js
