@@ -119,21 +119,6 @@ interface FileExplorerProps {
   onFileSelect: (path: string) => void
 }
 
-function Breadcrumb({ path }: { path: string }) {
-    const parts = path.split("/")
-    return (
-      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-        {parts.map((part, idx) => (
-          <div key={idx} className="flex items-center">
-            {idx > 0 && <span className="mx-1">›</span>}
-            <span className={idx === parts.length - 1 ? "text-foreground" : ""}>
-              {part}
-            </span>
-          </div>
-        ))}
-      </div>
-    )
-  }
 
 export function FileExplorer({ files, activeFile, onFileSelect }: FileExplorerProps) {
   const tree = buildFolderTree(files)
