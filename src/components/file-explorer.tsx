@@ -1,7 +1,6 @@
 "use client"
 import { useState } from "react"
 import { ChevronRight, ChevronDown, FileCode, FileJson, FileText, Folder } from "lucide-react"
-import { Code2, Eye, Copy, Download, MoreVertical, Split } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { cn } from "@/lib/utils"
