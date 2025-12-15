@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-
 import { recordAudio } from "@/lib/audio-utils"
-
 interface UseAudioRecordingOptions {
   transcribeAudio?: (blob: Blob) => Promise<string>
   onTranscriptionComplete?: (text: string) => void
