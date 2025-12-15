@@ -1,10 +1,7 @@
-// components/editor-panel.tsx
 "use client"
-
-import { useState } from "react"
-import { Code2, Eye, Copy, Download, MoreVertical, Split } from "lucide-react"
+import { Copy, Download} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { CodeEditor } from "./code-editor"
 
 interface FileNode {
@@ -42,7 +39,6 @@ export function EditorPanel({ files, activeFile,tab, setTab }: EditorPanelProps)
 
   return (
     <div className="h-full flex flex-col bg-gray-50">
-           {/* Tabs */}
       <Tabs value={tab} onValueChange={(v) => setTab(v as "code" | "preview")} className="flex flex-col">
         <div className="h-12 flex border-b border-gray-300 items-center justify-between px-2">
             <div className="border border-gray-300 py-2 px-3">
@@ -58,7 +54,6 @@ export function EditorPanel({ files, activeFile,tab, setTab }: EditorPanelProps)
         </div>
         
       </div>
-        {/* Tab contents */}
         <TabsContent value="code">
           <CodeEditor content={activeFileObj?.content || ""} fileName={activeFile} />
         </TabsContent>
