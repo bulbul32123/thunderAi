@@ -2,152 +2,119 @@
 
 import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  GalleryVerticalEnd,
+  Clock,
+  LifeBuoy,
+  Star,
+  Send,
+  Search,
+  LayoutTemplate,
   Settings2,
-  SquareTerminal,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SidebarRail,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { SearchBox } from "./SearchBox";
 
-// This is sample data.
 const data = {
-  user: {
-    name: "Bulbul",
-    email: "bulbul@gmail.com",
-    avatar: "/profilepic.jpeg",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Search",
+      // url: '',
+      icon: Search,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Recent Chats",
+      url: "/recent-chats",
+      icon: Clock,
+      isActive: true,
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
+      title: "Favorite  Chats",
+      url: "/favorite-chats",
+      icon: Star,
+      isActive: true,
+    },
+    {
+      title: "Templates",
+      url: "/templates",
+      icon: LayoutTemplate,
+      isActive: true,
+    },
+    {
+      title: "Your Chats",
+      isChat: true,
       items: [
         {
-          title: "Introduction",
+          title: "Build Proposal",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Build Ai Resume Builder",
           url: "#",
         },
         {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "Portfolio Builder",
           url: "#",
         },
       ],
     },
+  ],
+  navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+    },
+    {
+      title: "Support",
+      url: "/support",
+      icon: LifeBuoy,
+    },
+    {
+      title: "Feedback",
+      url: "/feedback",
+      icon: Send,
     },
   ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
-      <SidebarContent>
-        <NavMain items={data.navMain} />
-      </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
+    <>
+      <Sidebar
+        className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
+        {...props}
+      >
+        <SidebarHeader>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <div className="!py-3 px-3 bg-white text-gray-700 text-center hover:bg-gray-100/80 cursor-pointer rounded-sm text-[13px] font-semibold border border-gray-300 flex justify-center item-center">
+                  <span>New Chat</span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarHeader>
+        <SidebarContent>
+          <NavMain
+            items={data.navMain}
+          />
+          <NavSecondary items={data.navSecondary} className="mt-auto" />
+        </SidebarContent>
+      </Sidebar>
+    </>
   );
 }
