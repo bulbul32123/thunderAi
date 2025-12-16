@@ -1,6 +1,4 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { PromptInputArea } from "@/components/PromptInputArea";
 
 export default function Home() {
@@ -20,14 +18,6 @@ export default function Home() {
             <PromptInputArea />
           </div>
         </div>
-        {/* <Chat
-          messages={messages}
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          isGenerating={isLoading}
-          stop={stop}
-        /> */}
       </div>
     </div>
   );
