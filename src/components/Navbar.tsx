@@ -1,35 +1,37 @@
 import Image from "next/image";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export default function Navbar() {
   return (
     <div>
       <div className="flex flex-col">
-        <div className="transition-all duration-400 items-center flex min-h-[65px] ease-out px-8 max-sm:py-4 shrink-0 relative z-1 max-lg:px-0 max-sm:relative max-sm:z-[10] py-6 undefined">
-          <div className="container  flex justify-between items-center">
+        <div className="transition-all duration-400 items-center flex min-h-[65px] ease-out px-8 max-sm:py-4 shrink-0 relative z-1 max-lg:px-0 max-sm:relative max-sm:z-[10] py-3 undefined">
+          <div className="container flex justify-between items-center">
             <a
-              className="text-[12px] leading-[20px] text-emphasis-high w-[107px] max-sm:w-20 cursor-pointer"
+              className="text-[12px] leading-[20px] text-black w-[107px] max-sm:w-20 cursor-pointer flex gap-2 items-center"
               role="button"
             >
+              <SidebarTrigger className="-ml-1" />
               <div className="relative">
                 <h5 className="font-bold text-4xl">Thunder </h5>
-                <p className="text-emphasis-high text-[10px] leading-[10px] absolute -top-0.5 -right-10 font-medium">
+                <p className="text-black text-[10px] leading-[10px] absolute -top-0.5 -right-10 font-medium">
                   BETA
                 </p>
               </div>
             </a>
             <div className="flex gap-3 items-center">
               <div className="min-sm:hidden">
-                <div className="text-[14px] leading-[22px] text-emphasis-high hover:text-primary-500 cursor-pointer font-medium">
+                <div className="text-[14px] leading-[22px] text-black hover:text-primary-500 cursor-pointer font-medium">
                   My projects
                 </div>
               </div>
               <div className="flex gap-6 max-sm:gap-4 items-center">
                 <ul className="flex gap-4 items-center max-sm:hidden">
                   <div className="flex gap-6">
-                    <a className="text-[14px] leading-[22px] text-emphasis-high hover:text-primary-500 font-medium cursor-pointer">
+                    <a className="text-[14px] leading-[22px] text-black hover:text-primary-500 font-medium cursor-pointer">
                       Built with Rocket
                     </a>
-                    <div className="text-[14px] leading-[22px] text-emphasis-high hover:text-primary-500 cursor-pointer font-medium">
+                    <div className="text-[14px] leading-[22px] text-black hover:text-primary-500 cursor-pointer font-medium">
                       Templates
                     </div>
                   </div>
@@ -39,7 +41,7 @@ export default function Navbar() {
                     aria-haspopup="true"
                     id="my-projects"
                   >
-                    <div className="text-[14px] leading-[22px] text-emphasis-high hover:text-primary-500 cursor-pointer font-medium">
+                    <div className="text-[14px] leading-[22px] text-black hover:text-primary-500 cursor-pointer font-medium">
                       My projects
                     </div>
                   </button>
@@ -52,7 +54,7 @@ export default function Navbar() {
                   aria-expanded="false"
                   data-headlessui-state=""
                 >
-                  <div className="w-[28px] h-[28px] cursor-pointer rounded-[6px] bg-userProfile flex justify-center items-center text-emphasis-high">
+                  <div className="w-[28px] h-[28px] cursor-pointer rounded-[6px] bg-userProfile flex justify-center items-center text-black">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
@@ -83,7 +85,7 @@ export default function Navbar() {
                     height="1em"
                     fill="currentColor"
                     viewBox="0 0 256 256"
-                    className="w-5 h-5 text-emphasis-high"
+                    className="w-5 h-5 text-black"
                   >
                     <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
                   </svg>
