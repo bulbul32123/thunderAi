@@ -2,6 +2,7 @@ import { ProfileDropDown } from "@/components/ProfileDropDown";
 import Link from "next/link";
 
 export default function Navbar() {
+  
   return (
     <div className="bg-background sticky py-2 top-0 z-50 flex w-full items-center border-b ">
       <div className="flex flex-col w-full">
