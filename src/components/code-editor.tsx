@@ -1,6 +1,4 @@
-// components/code-editor.tsx
 "use client"
-
 import { useEffect, useState } from "react"
 import { getHighlighter } from "shiki"
 
