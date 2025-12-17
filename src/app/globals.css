@@ -375,3 +375,34 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+
+/* Base Shiki styling */
+.shiki {
+  padding: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 0.8;
+  counter-reset: line;
+}
+
+/* Each line */
+.shiki .line {
+  display: block;
+  padding-left: 3.5rem;
+  position: relative;
+}
+
+/* Line number */
+.shiki .line::before {
+  counter-increment: line;
+  content: counter(line);
+  position: absolute;
+  left: 0;
+  width: 3rem;
+  text-align: right;
+  padding-right: 0.75rem;
+  color: #9ca3af; /* Tailwind gray-400 */
+  user-select: none;
+}
