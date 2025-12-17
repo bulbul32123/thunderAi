@@ -1,8 +1,11 @@
 "use client";
 import { PromptInputArea } from "@/components/PromptInputArea";
+import Sidebar from "@/components/sidebar/Sidebar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
+    <Sidebar >
     <div className="">
       <div className="flex flex-col h-full justify-center items-center max-sm:items-start max-sm:h-auto grow pt-32 pb-8">
         <div className="flex flex-col gap-[54px] justify-center items-center w-full">
@@ -20,5 +23,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <Footer />
+ </Sidebar>
   );
 }
