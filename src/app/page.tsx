@@ -19,6 +19,7 @@ export default function Home() {
               </p>
             </div>
             <PromptInputArea />
+            
           </div>
         </div>
       </div>
