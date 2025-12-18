@@ -8,7 +8,6 @@ import { EditorPanel } from "@/components/editor-panel"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-// Mock AI-generated project structure
 export const mockProject = {
   framework: "nextjs",
   router: "app",
@@ -40,7 +39,6 @@ export default function RootLayout({
   )
 }`,
     },
-    // ===== app/page.tsx =====
     {
       path: "app/page.tsx",
       content: `import Link from 'next/link'
@@ -62,7 +60,6 @@ export default function HomePage() {
   )
 }`,
     },
-    // ===== app/builder/page.tsx =====
     {
       path: "app/builder/page.tsx",
       content: `import { useState } from 'react'
@@ -136,7 +133,6 @@ export default function BuilderPage() {
   )
 }`,
     },
-    // ===== app/api/resume/route.ts =====
     {
       path: "app/api/resume/route.ts",
       content: `import { NextRequest, NextResponse } from 'next/server'
@@ -157,7 +153,6 @@ export async function POST(req: NextRequest) {
   }
 }`,
     },
-    // ===== components/header.tsx =====
     {
       path: "components/header.tsx",
       content: `import Link from 'next/link'
@@ -174,7 +169,6 @@ export function Header() {
   )
 }`,
     },
-    // ===== components/ui/button.tsx =====
     {
       path: "components/ui/button.tsx",
       content: `import * as React from 'react'
@@ -199,14 +193,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'`,
     },
-    // ===== lib/utils.ts =====
     {
       path: "lib/utils.ts",
       content: `export function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }`,
     },
-    // ===== app/globals.css =====
     {
       path: "app/globals.css",
       content: `@tailwind base;
@@ -217,7 +209,6 @@ body {
   @apply bg-gray-50 text-gray-800;
 }`,
     },
-    // ===== package.json =====
     {
       path: "package.json",
       content: `{
