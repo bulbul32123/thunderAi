@@ -1,50 +1,33 @@
-"use client"
-
-import { SidebarIcon } from "lucide-react"
-
-import { SearchForm } from "@/components/search-form"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { useSidebar } from "@/components/ui/sidebar"
+"use client";
+import { PublishPopup } from "@/components/popups/PublishPopup.jsx";
+import { SharePopup } from "@/components/popups/SharePopup.jsx";
+import { ProjectSettings } from "@/components/popups/ProjectSettings.jsx";
+import { ProfileDropDown } from "./ProfileDropDown";
 
 export function SiteHeader() {
-  const { toggleSidebar } = useSidebar()
-
   return (
     <header className="bg-background sticky py-3 top-0 z-50 flex w-full items-center border-b">
-      <div className="flex  w-full items-center gap-2 px-4">
-        <Button
-          className="h-8 w-8"
-          variant="ghost"
-          size="icon"
-          onClick={toggleSidebar}
+      <div className="flex justify-between w-full items-center gap-2 px-4">
+        <a
+          className="text-[12px] leading-[20px] text-black w-[107px] max-sm:w-20 cursor-pointer flex gap-2 items-center"
+          role="button"
         >
-          <SidebarIcon />
-        </Button>
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <Breadcrumb className="hidden sm:block">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">
-                Building Your Application
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <SearchForm className="w-full sm:ml-auto sm:w-auto" />
+          <div className="relative">
+            <h5 className="font-bold text-4xl">Thunder </h5>
+            <p className="text-black text-[10px] leading-[10px] absolute -top-0.5 -right-10 font-medium">
+              BETA
+            </p>
+          </div>
+        </a>
+        <div className="flex gap-3 items-center">
+          <ul className="flex gap-2 items-center max-sm:hidden">
+            <ProjectSettings />
+            <SharePopup />
+            <PublishPopup />
+          </ul>
+          <ProfileDropDown />
+        </div>
       </div>
     </header>
-  )
+  );
 }
