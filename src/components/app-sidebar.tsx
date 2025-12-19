@@ -10,14 +10,9 @@ import {
   Settings2,
 } from "lucide-react";
 import {
-  SidebarGroup,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
 import { NavMain } from "@/components/nav-main";
@@ -27,7 +22,6 @@ import {
   SidebarContent,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { SearchBox } from "./SearchBox";
 
 const data = {
   navMain: [
