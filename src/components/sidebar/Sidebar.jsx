@@ -5,7 +5,6 @@ import {
     SidebarTrigger,
 } from '@/components/ui/sidebar'
 import Navbar from '../Navbar'
-
 export const iframeHeight = "800px"
 export const description = "A sidebar with a header and a search form."
 
