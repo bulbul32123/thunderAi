@@ -1,18 +1,16 @@
 "use client"
-
 import { useState } from "react"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { FileExplorer } from "@/components/file-explorer"
-import { Code2, Eye, Copy, Download, MoreVertical, Split } from "lucide-react"
+import { Code2, Eye, MoreVertical } from "lucide-react"
 import { EditorPanel } from "@/components/editor-panel"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export const mockProject = {
   framework: "nextjs",
   router: "app",
   files: [
-    // ===== app/layout.tsx =====
     {
       path: "app/layout.tsx",
       content: `import type { Metadata } from 'next'
@@ -364,28 +362,11 @@ body {
   ],
 }
 
-function Breadcrumb({ path }) {
-  const parts = path.split("/")
-  return (
-    <div className="flex items-center gap-1 text-sm text-muted-foreground">
-      {parts.map((part, idx) => (
-        <div key={idx} className="flex items-center">
-          {idx > 0 && <span className="mx-1">›</span>}
-          <span className={idx === parts.length - 1 ? "text-foreground" : ""}>
-            {part}
-          </span>
-        </div>
-      ))}
-    </div>
-  )
-}
+
 export default function WorkspaceLayout() {
   const [activeFile, setActiveFile] = useState(mockProject.files[0].path)
-  const activeFileObj = mockProject?.files?.find(f => f.path === activeFile)
   const [tab, setTab] = useState("code")
-  const handleCopy = () => {
-    if (activeFileObj) navigator.clipboard.writeText(activeFileObj.content)
-  }
+
   return (
     <div className="h-screen w-full bg-background text-black">
       <Tabs value={tab} className="flex-1 flex flex-col ">
@@ -432,3 +413,20 @@ export default function WorkspaceLayout() {
     </div>
   )
 }
+
+
+git add src/app/chat/[id]/page.js
+git commit -m 'src/app/chat/[id]/page.js' --date='2025-12-20'
+git push -u origin main
+
+
+src/app/chat/layout.jsx
+src/app/chat/page.tsx
+src/app/globals.css
+src/components/ProfileDropDown.jsx
+src/components/editor-panel.tsx
+src/components/nav-main.jsx
+src/components/popups/ProjectSettings.jsx
+src/components/popups/SharePopup.jsx
+src/components/team-switcher.tsx
+src/hooks/use-audio-recording.ts
