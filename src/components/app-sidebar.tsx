@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   Clock,
@@ -10,30 +9,28 @@ import {
   LayoutTemplate,
   Settings2,
 } from "lucide-react";
+import {
+  SidebarGroup,
+  SidebarMenu,
+  SidebarMenuAction,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from "@/components/ui/sidebar";
 
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
 import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { SearchBox } from "./SearchBox";
 
 const data = {
   navMain: [
-    {
-      title: "Search",
-      // url: '',
-      icon: Search,
-      isActive: true,
-    },
     {
       title: "Recent Chats",
       url: "/recent-chats",
@@ -58,15 +55,15 @@ const data = {
       items: [
         {
           title: "Build Proposal",
-          url: "#",
+          url: "chat/build-proposal1292345344",
         },
         {
           title: "Build Ai Resume Builder",
-          url: "#",
+          url: "chat/build-ai-resume-builder1292345344",
         },
         {
           title: "Portfolio Builder",
-          url: "#",
+          url: "chat/portfolio-builder543657",
         },
       ],
     },
@@ -105,16 +102,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <span>New Chat</span>
                 </div>
               </SidebarMenuButton>
+              <SidebarMenuButton asChild>
+                <div className="mt-3 flex gap-2 text-[15px] justify-start items-center cursor-pointer">
+                  <span>
+                    <Search size={17}/>
+                  </span>
+                  <span>Search</span>
+                </div>
+              </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
-          <NavMain
-            items={data.navMain}
-          />
+          <NavMain items={data.navMain} />
           <NavSecondary items={data.navSecondary} className="mt-auto" />
         </SidebarContent>
       </Sidebar>
     </>
   );
 }
+
+   
