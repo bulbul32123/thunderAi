@@ -17,11 +17,12 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function NavMain({ items }) {
   return (
     <>
-      <SidebarGroup>
+      <SidebarGroup className="!mt-0 !pt-0">
         <SidebarMenu>
           {items.map((item) => (
             <Collapsible
@@ -30,7 +31,7 @@ export function NavMain({ items }) {
               defaultOpen={item.isActive}
               className={`${item.isChat && "!py-4"}`}
             >
-              <SidebarMenuItem>
+              <SidebarMenuItem >
                 <SidebarMenuButton asChild tooltip={item.title}>
                   {item.isChat ? (
                     <CollapsibleTrigger>
@@ -42,21 +43,21 @@ export function NavMain({ items }) {
                       </div>
                     </CollapsibleTrigger>
                   ) : (
-                    <a href={item.url}>
-                      {!item?.url ? (
-                        <div
-                          className="flex gap-2 text-[15px] justify-start items-center cursor-pointer"
-                        >
-                          <item.icon className="text-sm" size={"18px"} />
-                          <span>{item.title}</span>
-                        </div>
-                      ) : (
-                        <>
-                          <item.icon />
-                          <span>{item.title}</span>
-                        </>
-                      )}
-                    </a>
+                      <Link href={item?.url}>
+                        {!item?.url ? (
+                          <div
+                            className="flex gap-2 text-[15px] justify-start items-center cursor-pointer"
+                          >
+                            <item.icon className="text-sm" size={"18px"} />
+                            <span>{item.title}</span>
+                          </div>
+                        ) : (
+                          <>
+                            <item.icon />
+                            <span>{item.title}</span>
+                          </>
+                        )}
+                      </Link>
                   )}
                 </SidebarMenuButton>
                 {item.items?.length ? (
@@ -75,9 +76,9 @@ export function NavMain({ items }) {
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
                             <SidebarMenuSubButton asChild>
-                              <a href={subItem.url}>
+                              <Link href={subItem.url}>
                                 <span>{subItem.title}</span>
-                              </a>
+                              </Link>
                             </SidebarMenuSubButton>
                           </SidebarMenuSubItem>
                         ))}
