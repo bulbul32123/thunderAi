@@ -3,9 +3,9 @@ import { useParams } from "next/navigation"
 import { useState, useMemo } from "react"
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable"
 import { FileExplorer } from "@/components/file-explorer"
-import { Code2, Eye, MoreVertical } from "lucide-react"
+import { Code2, Eye } from "lucide-react"
 import { EditorPanel } from "@/components/editor-panel"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList } from "@/components/ui/tabs"
 import CodePreview from "@/components/CodePreview"
 import { DownloadPopup } from "@/components/popups/DownloadPopup.jsx"
 
@@ -437,3 +437,9 @@ export default function WorkspaceLayout() {
 
 
 
+// Tasks for this project
+
+// 1. Add Rename project feature,share model,publish model 
+// 2. Add Chatbox into the chat detail page 
+// 3. Create user, chats,favorites and save it local storage
+// 4. implement the login and logout interface
