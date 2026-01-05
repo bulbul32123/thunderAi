@@ -5,9 +5,9 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/componen
 import { FileExplorer } from "@/components/file-explorer"
 import { Code2, Eye, MoreVertical } from "lucide-react"
 import { EditorPanel } from "@/components/editor-panel"
-import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import CodePreview from "@/components/CodePreview"
+import { DownloadPopup } from "@/components/popups/DownloadPopup.jsx"
 
 export const mockProject = {
   framework: "nextjs",
@@ -391,7 +391,7 @@ export default function WorkspaceLayout() {
         <div className="border-b border-gray-300">
           <TabsList className="h-12 w-full bg-transparent rounded-none px-4 flex justify-between items-center">
             <div className="">
-             Project name: <button className="underline text-black cursor-pointer">{title}</button>
+              Project name: <button className="underline text-black cursor-pointer">{title}</button>
             </div>
             <div className="top-4 transform z-20 bg-white/90 backdrop-blur-sm border border-zinc-200/80 shadow-sm p-1 rounded-full flex items-center gap-1">
               <button
@@ -410,9 +410,7 @@ export default function WorkspaceLayout() {
               </button>
             </div>
             <div className="flex items-center gap-1">
-              <Button variant="ghost" size="icon" className="h-8 w-8 cursor-pointer">
-                <MoreVertical className="h-4 w-4" />
-              </Button>
+              <DownloadPopup id={slug} />
             </div>
           </TabsList>
         </div>
