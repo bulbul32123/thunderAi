@@ -15,7 +15,7 @@ export function SharePopup() {
             <PopoverContent className="w-[25rem]" align="end">
                 <div className="grid gap-4">
                     <div className="border-b border-gray-200 pb-3">
-                        <h4 className="leading-none font-medium">Share</h4>
+                        {/* <h4 className="leading-none font-medium">Share</h4> */}
                     </div>
                 </div>
             </PopoverContent>
